@@ -1,0 +1,37 @@
+<p>Le resulats de 5 + 10 est {{ addition }}</p>
+<p>Le resulats de {{ x }}*{{ y }} est {{ multiplication() }}</p>
+<p>Voici le footer de mon application.</p>
+<button [disabled]="!isLoggedIn">Mon super bouton</button>
+<button (click)="login()">Connexion en tant que {{ monNom }}</button>
+<input type="text" [(ngModel)]="monNom">
+<p>{{monNom}} s'est connecté a {{connectedAt | date}}</p>
+<p>Voici la liste des tutos protégé:</p>
+<ul *ngIf="isLoggedIn; else notConnected">
+  <li>Javascript</li>
+  <li>Typescipt</li>
+  <li>Angular</li>
+  <li>Ionic</li>
+</ul>
+<ng-template #notConnected>
+  <p>Vous devez etre connecter pour voir cette liste</p>
+</ng-template>
+<p [ngStyle]="{color:getStatus()}">Voici les autres tutos</p>
+<p [ngClass]="{
+  'color-red':isLoggedIn==false,
+  'color-green':isLoggedIn==true
+}">Voici les autres tutos2</p>
+<ul *ngFor="let list of myList">
+  <li>nom: {{list.nom | uppercase}}</li>
+  <li>disponible: {{list.disponible}}</li>
+</ul>
+<!-- [nom propriete] -->
+<!-- Banana in the box [()] -->
+<!-- ngIf -->
+<!-- ngFor -->
+<!-- ngStyle -->
+<!-- ngClass Formule [ngClass]="{"nom_class":condition,"nom_class":condition}" -->
+<!-- formule pour les pipes
+{{ donnees | monPipe }} un seul pipe
+{{ donnees | monPipe | pipe2 | pipe3 }} plusieurs pipes
+{{ donnees | monPipe : 'x' | pipe2 : 'x : 'y' | pipe3 }} plusieurs pipes avec parametres
+-->
